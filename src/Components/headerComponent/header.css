@@ -1,0 +1,71 @@
+#headerBlock {
+  background: #0f0617;
+  color: #fff;
+  height: 70px;
+  width: 100%;
+  position: fixed;
+}
+
+#headerBlock article nav {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  height: 70px;
+  align-items: center;
+}
+
+#headerBlock article nav .leftMenu {
+  flex-basis: 60%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#headerBlock article nav .rightMenu {
+  flex-basis: 40%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.logo {
+  width: 46px;
+  height: 46px;
+}
+
+.logoBlock {
+  flex-basis: 10%;
+}
+.menuBlock {
+  flex-basis: 90%;
+}
+
+.menuBlock ul {
+  display: flex;
+  list-style: none;
+}
+.menuBlock ul li a {
+  padding: 15px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.menuBlock ul li a:hover {
+  color: #da76ff;
+}
+
+.rightMenu ul {
+  list-style: none;
+  display: flex;
+}
+.rightMenu ul li a {
+  text-decoration: none;
+  padding: 15px;
+  color: #fff;
+}
+
+.buyPlan {
+  border: 1px solid #efefef;
+  padding: 7px 20px !important;
+  border-radius: 6px;
+}
