@@ -1,6 +1,9 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import SideBarMenu from "../SideBarMenu/SideBarMenu";
 
 const RightMenu = () => {
+  let [toggle, setToggle] = useState(false);
+
   return (
     <Fragment>
       <div className="rightMenu">
@@ -22,11 +25,16 @@ const RightMenu = () => {
             </a>
           </li>
           <li>
-            <a href="/">
+            <a href="#" onClick={() => setToggle(!toggle)}>
               <i class="fas fa-bars"></i>
             </a>
           </li>
         </ul>
+        <section id="sidebarWrapper">
+          <article>
+            <SideBarMenu toggle={toggle} />
+          </article>
+        </section>
       </div>
     </Fragment>
   );
