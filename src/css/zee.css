@@ -12,9 +12,67 @@
 body {
   font-family: NotoSansRegular, -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue;
+
+  background-color: #0f0617;
+  color: #fff;
 }
 
 #sliderWrapper {
   position: absolute;
   top: 70px;
+}
+
+.carousel .control-next.control-arrow {
+  right: 10%;
+}
+.carousel .control-prev.control-arrow {
+  left: 10%;
+}
+
+.thumbs-wrapper {
+  display: none;
+}
+
+.carousel .slide .legend {
+  margin-left: -18%;
+  width: 50%;
+  bottom: 150px;
+  opacity: 1;
+  left: 30%;
+  background-color: transparent;
+  text-align: left;
+}
+
+.legend h2 {
+  font-size: 30px;
+  padding: 10px 0;
+  text-transform: capitalize;
+}
+
+.movie_list {
+  padding: 13px 0 0;
+}
+.movie_list span {
+  list-style-type: disc;
+  padding: 0 10px 0 0;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.legend p.para {
+  font-size: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 10px 0;
+}
+
+p > button {
+  padding: 5px 20px;
+  border-radius: 15px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  margin: 10px 10px 0 0;
+  cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import SideBarMenu from "../SideBarMenu/SideBarMenu";
-
+import { Link } from 'react-router-dom';
 const RightMenu = () => {
   let [toggle, setToggle] = useState(false);
 
@@ -12,7 +12,7 @@ const RightMenu = () => {
             <a href="/">A</a>
           </li>
           <li>
-            <a href="/">Login</a>
+            <Link to="/login">Login</Link>
           </li>
           <li>
             <a href="/">
