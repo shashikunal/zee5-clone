@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 50vh;
+  height: 70vh;
 }
 
 #AuthBlock h2 {
@@ -45,16 +45,27 @@
 #AuthBlock form button {
   width: 100%;
   background: transparent;
-
   border-radius: 20px;
   padding: 15px 20px;
-
   font-size: 16px;
   font-weight: bold;
   margin: 20px 0;
-
   color: hsla(0, 0%, 100%, 0.5);
   border: 1px solid hsla(0, 0%, 100%, 0.5);
+  cursor: pointer;
+}
 
-  cursor: not-allowed;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+}
+
+#AuthBlock a {
+  color: rgb(255, 0, 145);
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: capitalize;
 }

@@ -21,8 +21,16 @@ const SliderComponent = () => {
               gangster.
             </p>
             <p>
-              <button>Play</button>
-              <button className="buy_plan">Buy Plan</button>
+              <button>
+                <span className="play_icon">
+                  <i class="fas fa-play"></i>
+                </span>
+                Play
+              </button>
+              <button className="buy_plan">
+                <i class="fas fa-crown"></i>
+                Buy Plan
+              </button>
             </p>
           </div>
         </div>
@@ -45,8 +53,16 @@ const SliderComponent = () => {
               will their marriage stand the test of time?
             </p>
             <p>
-              <button>Play</button>
-              <button className="buy_plan">Buy Plan</button>
+              <button>
+                <span className="play_icon">
+                  <i class="fas fa-play"></i>
+                </span>
+                Play
+              </button>
+              <button className="buy_plan">
+                <i class="fas fa-crown"></i>
+                Buy Plan
+              </button>
             </p>
           </div>
         </div>
@@ -68,8 +84,16 @@ const SliderComponent = () => {
               stake.
             </p>
             <p>
-              <button>Play</button>
-              <button className="buy_plan">Buy Plan</button>
+              <button>
+                <span className="play_icon">
+                  <i class="fas fa-play"></i>
+                </span>
+                Play
+              </button>
+              <button className="buy_plan">
+                <i class="fas fa-crown"></i>
+                Buy Plan
+              </button>
             </p>
           </div>
         </div>
@@ -89,7 +113,12 @@ const SliderComponent = () => {
               bring peace to the city?
             </p>
             <p>
-              <button>Play</button>
+              <button>
+                <span className="play_icon">
+                  <i class="fas fa-play"></i>
+                </span>
+                Play
+              </button>
             </p>
           </div>
         </div>
@@ -108,8 +137,16 @@ const SliderComponent = () => {
               been a murder.
             </p>
             <p>
-              <button>Play</button>
-              <button className="buy_plan">Buy Plan</button>
+              <button>
+                <span className="play_icon">
+                  <i class="fas fa-play"></i>
+                </span>
+                Play
+              </button>
+              <button className="buy_plan">
+                <i class="fas fa-crown"></i>
+                Buy Plan
+              </button>
             </p>
           </div>
         </div>

@@ -6,6 +6,10 @@ import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import PageNotFound from "./Pages/PageNotFound";
 
+//!toast messages
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 class App extends Component {
   render() {
     return (
@@ -16,6 +20,7 @@ class App extends Component {
               <HeaderComponent />
             </article>
           </section>
+          <ToastContainer />
           <Switch>
             <Route path="/" exact>
               <Home />
