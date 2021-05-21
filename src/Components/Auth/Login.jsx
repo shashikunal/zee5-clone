@@ -1,8 +1,46 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import firebase from "../../firebase";
+import { withRouter } from "react-router-dom";
 import "./Auth.css";
 class Login extends Component {
+  state = {
+    email: "",
+    password: "",
+    loading: false,
+  };
+
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSubmit = async e => {
+    e.preventDefault();
+    this.setState({ loading: true });
+    try {
+      let { email, password } = this.state;
+      let userData = await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
+      //?Email Verified
+
+      if (userData.user.emailVerified === true) {
+        let message = `${userData.user.displayName} has been successfully logged in`;
+        toast.success(message);
+
+        this.props.history.push("/");
+      } else {
+        let errorMessage = `${email} is not yet verified please verify ${email} then login`;
+        toast.error(errorMessage);
+      }
+      this.setState({ loading: false, email: " ", password: "" });
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
   render() {
+    let { email, password, loading } = this.state;
     return (
       <section id="AuthBlock">
         <article>
@@ -11,13 +49,15 @@ class Login extends Component {
             Login to continue enjoying uninterrupted video and personalized
             experience.
           </p>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
                 placeholder="email"
                 name="email"
+                value={email}
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
@@ -26,10 +66,12 @@ class Login extends Component {
                 className="form-control"
                 placeholder="password"
                 name="password"
+                value={password}
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
-              <button>Login</button>
+              <button>{loading === true ? `loading...` : "Login"}</button>
             </div>
             <div className="form-group">
               <p>
@@ -43,4 +85,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

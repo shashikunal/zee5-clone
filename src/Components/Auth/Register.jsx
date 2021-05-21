@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import firebase from "../../firebase";
 import { toast } from "react-toastify";
 import { withRouter } from "react-router-dom";
+import md5 from "md5";
 import "./Auth.css";
 class Register extends Component {
   state = {
+    username: "",
     email: "",
     password: "",
     confirmpassword: "",
@@ -20,9 +22,10 @@ class Register extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     try {
-      let { email, password, confirmpassword, phonenumber, loading } =
+      let { username, email, password, confirmpassword, phonenumber, loading } =
         this.state;
       if (password === confirmpassword) {
+        // !======================= START REAL TIME FIREBASE AUTHENTICATION=========================*/
         //use firebase auth
         let userData = await firebase
           .auth()
@@ -32,6 +35,32 @@ class Register extends Component {
         userData.user.sendEmailVerification(); //?email verifier given by firebase
         toast.info(verificationMessage);
         this.props.history.push("/login"); //?redirection
+        console.log(userData);
+
+        //?=====================update Profile===========================//
+        await userData.user.updateProfile({
+          displayName: username,
+          phoneNumber: phonenumber,
+          photoURL: `http://www.gravatar.com/avatar/${md5(email)}?d=identicon`,
+          registrationDate: new Date(),
+        });
+        // !======================= ENDS REAL TIME FIREBASE AUTHENTICATION=========================*/
+
+        // TODO======================= START REAL TIME FIREBASE DATABASE=========================*/
+        firebase
+          .database()
+          .ref()
+          .child("/users" + userData.user.uid)
+          .set({
+            email : userData.user.email,
+            phonenumber: phonenumber,
+            photoURL: userData.user.photoURL,
+            displayName: userData.user.displayName,
+            uid: userData.user.uid,
+            RegistrationDate: new Date().toString(),
+          });
+
+        // TODO======================= ENDS REAL TIME FIREBASE DATABASE=========================*/
       } else {
         toast.error("password is not match");
       }
@@ -49,7 +78,8 @@ class Register extends Component {
   };
 
   render() {
-    let { email, password, confirmpassword, phonenumber, loading } = this.state;
+    let { username, email, password, confirmpassword, phonenumber, loading } =
+      this.state;
     return (
       <section id="AuthBlock">
         <article>
@@ -59,6 +89,16 @@ class Register extends Component {
             experience.
           </p>
           <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="username"
+                name="username"
+                value={username}
+                onChange={this.handleChange}
+              />
+            </div>
             <div className="form-group">
               <input
                 type="email"
