@@ -70,3 +70,11 @@
   padding: 7px 20px !important;
   border-radius: 6px;
 }
+
+.rightMenu img {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  margin: -8px -17px;
+}

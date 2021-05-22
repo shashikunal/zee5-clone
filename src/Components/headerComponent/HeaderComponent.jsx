@@ -2,12 +2,12 @@ import React, { Fragment } from "react";
 import LeftMenu from "./LeftMenu";
 import RightMenu from "./RightMenu";
 import "./header.css";
-const HeaderComponent = () => {
+const HeaderComponent = props => {
   return (
     <Fragment>
       <nav>
         <LeftMenu />
-        <RightMenu />
+        <RightMenu userData={props.userData} />
       </nav>
     </Fragment>
   );

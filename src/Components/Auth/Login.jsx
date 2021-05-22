@@ -34,10 +34,10 @@ class Login extends Component {
         let errorMessage = `${email} is not yet verified please verify ${email} then login`;
         toast.error(errorMessage);
       }
-      this.setState({ loading: false, email: " ", password: "" });
     } catch (err) {
       toast.error(err.message);
     }
+    this.setState({ loading: false, email: " ", password: "" });
   };
   render() {
     let { email, password, loading } = this.state;
@@ -69,6 +69,9 @@ class Login extends Component {
                 value={password}
                 onChange={this.handleChange}
               />
+            </div>
+            <div className="form-group">
+              <Link to="/forgot-password">forgot password</Link>
             </div>
             <div className="form-group">
               <button>{loading === true ? `loading...` : "Login"}</button>
