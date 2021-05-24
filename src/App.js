@@ -1,6 +1,11 @@
 import React, { Component, Fragment } from "react";
 import HeaderComponent from "./Components/headerComponent/HeaderComponent";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Home from "./Pages/Home";
 import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
@@ -10,6 +15,8 @@ import firebase from "./firebase";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ForgotPassword from "./Components/Auth/ForgotPassword";
+import PhoneAuth from "./Components/Auth/PhoneAuth";
+import AdminDashboard from "./Components/AdminArea/AdminDashboard";
 
 class App extends Component {
   state = {
@@ -40,10 +47,12 @@ class App extends Component {
             </article>
           </section>
           <ToastContainer />
+
           <Switch>
             <Route path="/" exact>
               <Home />
             </Route>
+
             <Route path="/login" exact>
               <Login />
             </Route>
@@ -53,6 +62,14 @@ class App extends Component {
             <Route path="/forgot-password" exact>
               <ForgotPassword />
             </Route>
+            <Route path="/send-otp" exact>
+              <PhoneAuth />
+            </Route>
+            {this.state.userData ? (
+              <Route path="/admin" exact>
+                <AdminDashboard userData={this.state.userData} />
+              </Route>
+            ) : null}
             <Route path="*">
               <PageNotFound />
             </Route>

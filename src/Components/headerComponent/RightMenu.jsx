@@ -57,11 +57,7 @@ const RightMenu = props => {
               <i className="fa fa-search" aria-hidden="true"></i>
             </a>
           </li>
-          {props.userData.emailVerified ? (
-            <AuthenticatedUser />
-          ) : (
-            <AnonymousUser />
-          )}
+          {props.userData ? <AuthenticatedUser /> : <AnonymousUser />}
           <li>
             <a href="/" className="buyPlan">
               <i class="fas fa-crown"></i> Buy Plan

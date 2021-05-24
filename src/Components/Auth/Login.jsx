@@ -49,6 +49,8 @@ class Login extends Component {
             Login to continue enjoying uninterrupted video and personalized
             experience.
           </p>
+          <p>or</p>
+          <Link to="/send-otp">login using otp</Link>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <input
