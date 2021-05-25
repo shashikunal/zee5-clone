@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ForgotPassword from "./Components/Auth/ForgotPassword";
 import PhoneAuth from "./Components/Auth/PhoneAuth";
 import AdminDashboard from "./Components/AdminArea/AdminDashboard";
+import UploadProfilePhoto from "./Components/Auth/uploadProfilePhoto";
 
 class App extends Component {
   state = {
@@ -25,6 +26,7 @@ class App extends Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
+      console.log(user);
       if (user) {
         console.log("user logged in");
         this.setState({ userData: user });
@@ -65,11 +67,18 @@ class App extends Component {
             <Route path="/send-otp" exact>
               <PhoneAuth />
             </Route>
-            {this.state.userData ? (
+            {this.state.userData.email ? (
               <Route path="/admin" exact>
                 <AdminDashboard userData={this.state.userData} />
               </Route>
             ) : null}
+            {/*for auth users */}
+            {this.state.userData ? (
+              <Route path="/upload-profile-photo" exact>
+                <UploadProfilePhoto userData={this.state.userData} />
+              </Route>
+            ) : null}
+
             <Route path="*">
               <PageNotFound />
             </Route>

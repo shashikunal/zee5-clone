@@ -48,3 +48,15 @@
   text-shadow: 1px 1px 1px #111;
   filter: drop-shadow();
 }
+.edit-icon {
+  position: relative;
+}
+.edit-icon i {
+  color: #fff;
+  position: absolute;
+  right: -143px;
+  top: -139px;
+  background: #e91e63;
+  padding: 10px;
+  border-radius: 100%;
+}

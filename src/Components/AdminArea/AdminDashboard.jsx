@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Admin.css";
 class AdminDashboard extends Component {
   render() {
@@ -8,7 +9,13 @@ class AdminDashboard extends Component {
         <article>
           <aside className="sideBar">
             <div className="profile_area">
-              <img src={photoURL} alt={displayName} />
+              <Link to="upload-profile-photo">
+                <span className="edit-icon">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </span>
+                <img src={photoURL} alt={displayName} />
+              </Link>
+
               <h3>{displayName}</h3>
             </div>
           </aside>
