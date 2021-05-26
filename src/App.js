@@ -68,7 +68,7 @@ class App extends Component {
             <Route path="/send-otp" exact>
               <PhoneAuth />
             </Route>
-            {this.state.userData.email ? (
+            {this.state.userData ? (
               <Route path="/admin" exact>
                 <AdminDashboard userData={this.state.userData} />
               </Route>

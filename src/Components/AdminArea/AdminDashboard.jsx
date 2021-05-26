@@ -1,9 +1,29 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
+import { toast } from "react-toastify";
 import firebase from "../../firebase";
+import { withRouter } from "react-router-dom";
 import "./Admin.css";
-import PasswordUpdate from "./PasswordUpdate";
+
+
 class AdminDashboard extends Component {
+  onDeleteAccount = e => {
+    try {
+      let user = firebase.auth().currentUser;
+      user
+        .delete()
+        .then(_ => {
+          toast.success("successfully account deleted");
+          this.props.history.push("/login");
+        })
+        .catch(err => {
+          toast.error(err.message);
+        });
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
+
   render() {
     console.log(this.props);
     let { photoURL, displayName } = this.props.userData;
@@ -24,6 +44,9 @@ class AdminDashboard extends Component {
             <hr />
             <div className="profile_account_setting">
               <Link to="update-password">Update Password</Link>
+              <p>
+                <button onClick={this.onDeleteAccount}>Delete Account</button>
+              </p>
             </div>
           </aside>
           <main className="admin-container">
@@ -35,4 +58,4 @@ class AdminDashboard extends Component {
   }
 }
 
-export default AdminDashboard;
+export default withRouter(AdminDashboard);
