@@ -60,3 +60,22 @@
   padding: 10px;
   border-radius: 100%;
 }
+
+.profile_account_setting {
+  background: #1a272c61;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  border: none;
+}
+.profile_account_setting a {
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: capitalize;
+  padding: 10px;
+  color: #fff;
+  border-bottom: 2px solid #e91e63;
+  filter: drop-shadow(2px 4px 6px black);
+}

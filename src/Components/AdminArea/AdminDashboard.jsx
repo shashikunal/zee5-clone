@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+import firebase from "../../firebase";
 import "./Admin.css";
+import PasswordUpdate from "./PasswordUpdate";
 class AdminDashboard extends Component {
   render() {
+    console.log(this.props);
     let { photoURL, displayName } = this.props.userData;
     return (
       <section id="admin-dashBoard">
@@ -18,8 +21,14 @@ class AdminDashboard extends Component {
 
               <h3>{displayName}</h3>
             </div>
+            <hr />
+            <div className="profile_account_setting">
+              <Link to="update-password">Update Password</Link>
+            </div>
           </aside>
-          <main className="admin-container">Main Data</main>
+          <main className="admin-container">
+            <h1>main</h1>
+          </main>
         </article>
       </section>
     );

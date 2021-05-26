@@ -13,6 +13,7 @@ class UploadProfilePhoto extends Component {
     progress: 0,
     userRef: firebase.auth().currentUser,
     usersRef: firebase.database().ref("users"),
+    barStatus: false,
   };
 
   handleChange = e => {
@@ -20,54 +21,56 @@ class UploadProfilePhoto extends Component {
   };
 
   handleSubmit = async e => {
-    let { upload_avatar } = this.state;
+    let { upload_avatar, url, loading, userRef, usersRef, progress } =
+      this.state;
     e.preventDefault();
     this.setState({ loading: true });
-    console.log(this.state);
     try {
-      let uploadTask = firebase
+      //?Firebase storage => store profile photo images
+      let upload_task = firebase
         .storage()
         .ref(`profile-photo/${upload_avatar.name}`)
         .put(upload_avatar);
 
-      uploadTask.on(
+      //firebase on event
+      upload_task.on(
         "state_changed",
         snapShot => {
-          let progress = Math.round();
+          //for Progress purpose
+          let progress = Math.round(
+            (snapShot.bytesTransferred / snapShot.totalBytes) * 100
+          );
+          this.setState({ progress, barStatus: true });
         },
-        //error handling
-        err => console.log(err),
-        //completion of upload task
+        err => {
+          //for error handling
+          console.log(err);
+        },
         () => {
-          //downloading image url and next will save it on database
+          //task completion purpose
+          //download storage image url from firebase
           firebase
             .storage()
             .ref("profile-photo")
             .child(upload_avatar.name)
             .getDownloadURL()
             .then(url => {
-              //should save it on database
-              this.setState({ url }, () => {
-                console.log(url);
-                this.state.userRef
-                  .updateProfile({
-                    photoURL: this.state.url,
+              this.setState({ url, barStatus: false }, () => {
+                userRef.updateProfile({
+                  photoURL: this.state.url,
+                });
+                //update usersRef
+                usersRef
+                  .child(this.state.userData.uid)
+                  .update({
+                    avatar: this.state.url,
                   })
                   .then(_ => {
-                    // this.props.history.push("/admin");
-                    // toast.success("successfully photo updated...");
+                    toast.success("successfully photo updated");
+                    this.props.history.push("/admin");
                   })
-                  .catch(err => toast.error(err.message));
+                  .catch(err => console.log(err));
               });
-
-              this.state.usersRef
-                .child(this.state.userData.uid)
-                .update({ avatar: this.state.url })
-                .then(_ => {
-                  this.props.history.push("/admin");
-                  toast.success("successfully photo updated...");
-                })
-                .catch(err => console.log(err));
             })
             .catch(err => console.log(err));
         }
@@ -75,11 +78,17 @@ class UploadProfilePhoto extends Component {
     } catch (err) {
       toast.error(err.message);
     }
-    // this.setState({ loading: false });
+    this.setState({ loading: false });
   };
 
   render() {
-    let { upload_avatar, loading } = this.state;
+    let { upload_avatar, loading, progress } = this.state;
+    let progressBar = (
+      <progress value={progress} max={100} style={{ width: "100 %" }}>
+        {progress * 100} %
+      </progress>
+    );
+
     return (
       <section id="AuthBlock">
         <article>
@@ -98,7 +107,10 @@ class UploadProfilePhoto extends Component {
                 onChange={this.handleChange}
               />
             </div>
-
+            <div className="form-group">
+              {this.state.barStatus === true ? progressBar : ""}
+              {this.state.barStatus === true ? progress + "%" : ""}
+            </div>
             <div className="form-group">
               <button>
                 {loading === true ? `loading...` : "Upload Photo"}

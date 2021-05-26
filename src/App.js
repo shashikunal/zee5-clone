@@ -18,6 +18,7 @@ import ForgotPassword from "./Components/Auth/ForgotPassword";
 import PhoneAuth from "./Components/Auth/PhoneAuth";
 import AdminDashboard from "./Components/AdminArea/AdminDashboard";
 import UploadProfilePhoto from "./Components/Auth/uploadProfilePhoto";
+import PasswordUpdate from "./Components/AdminArea/PasswordUpdate";
 
 class App extends Component {
   state = {
@@ -74,9 +75,14 @@ class App extends Component {
             ) : null}
             {/*for auth users */}
             {this.state.userData ? (
-              <Route path="/upload-profile-photo" exact>
-                <UploadProfilePhoto userData={this.state.userData} />
-              </Route>
+              <Fragment>
+                <Route path="/upload-profile-photo" exact>
+                  <UploadProfilePhoto userData={this.state.userData} />
+                </Route>
+                <Route path="/update-password" exact>
+                  <PasswordUpdate />
+                </Route>
+              </Fragment>
             ) : null}
 
             <Route path="*">
