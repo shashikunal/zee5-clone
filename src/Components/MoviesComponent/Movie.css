@@ -1,0 +1,118 @@
+#Movie_block {
+  width: 80%;
+  margin: 0 auto;
+}
+#Movie_block article {
+  display: flex;
+  flex-direction: column;
+}
+
+#Movie_block h2 {
+  border-bottom: 1px solid deeppink;
+
+  margin: 20px 0;
+  padding-bottom: 13px;
+  font-size: 30px;
+  text-transform: uppercase;
+  filter: drop-shadow(2px 4px 6px black);
+}
+#Movie_block p {
+  font-size: 15px;
+  padding: 10px 0;
+}
+#Movie_block form {
+  width: 100%;
+}
+
+#Movie_block form input {
+  background-color: transparent !important;
+  border: none;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.2);
+  color: #fff;
+  width: 100%;
+  height: 40px;
+  display: block;
+  padding: 0 10px;
+  margin: 10px 0;
+  outline: none;
+}
+#Movie_block form input:focus {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #e50045 !important;
+}
+
+#Movie_block form button {
+  width: auto;
+  background: #ff0091;
+  border-radius: 6px;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+#Movie_block form button:hover {
+  background-color: #e50045;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+}
+
+#Movie_block a {
+  color: rgb(255, 0, 145);
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+#Movie_block form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#Movie_block form div {
+  flex-basis: 24%;
+  margin: 5px;
+}
+
+#description_block,
+#movie_btn_block {
+  flex-basis: 100% !important;
+}
+
+#description_block label,
+#movie_select label {
+  display: block;
+  padding: 10px 0;
+}
+#movie_select {
+  flex-basis: 100%;
+}
+
+#movie_select select {
+  padding: 10px;
+  width: 100%;
+  background: transparent;
+  color: #fff;
+}
+
+#movie_select select option {
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+#description_block textarea {
+  width: 100%;
+  background-color: transparent;
+  color: #fff;
+}

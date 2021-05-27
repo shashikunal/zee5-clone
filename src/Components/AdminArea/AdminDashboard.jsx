@@ -5,11 +5,11 @@ import firebase from "../../firebase";
 import { withRouter } from "react-router-dom";
 import "./Admin.css";
 
-
 class AdminDashboard extends Component {
   onDeleteAccount = e => {
     try {
       let user = firebase.auth().currentUser;
+
       user
         .delete()
         .then(_ => {
@@ -44,6 +44,7 @@ class AdminDashboard extends Component {
             <hr />
             <div className="profile_account_setting">
               <Link to="update-password">Update Password</Link>
+              <Link to="/movies/add-movie">Add Movies</Link>
               <p>
                 <button onClick={this.onDeleteAccount}>Delete Account</button>
               </p>

@@ -19,6 +19,7 @@ import PhoneAuth from "./Components/Auth/PhoneAuth";
 import AdminDashboard from "./Components/AdminArea/AdminDashboard";
 import UploadProfilePhoto from "./Components/Auth/uploadProfilePhoto";
 import PasswordUpdate from "./Components/AdminArea/PasswordUpdate";
+import AddMovies from "./Components/MoviesComponent/AddMovies";
 
 class App extends Component {
   state = {
@@ -81,6 +82,9 @@ class App extends Component {
                 </Route>
                 <Route path="/update-password" exact>
                   <PasswordUpdate />
+                </Route>
+                <Route path="/movies/add-movie" exact>
+                  <AddMovies userData={this.state.userData} />
                 </Route>
               </Fragment>
             ) : null}
