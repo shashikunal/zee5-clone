@@ -116,3 +116,17 @@ input:-webkit-autofill:active {
   background-color: transparent;
   color: #fff;
 }
+
+#progressBlock article progress {
+  width: 75%;
+  margin: 10px 148px;
+  height: 30px;
+  padding: 3px;
+}
+#progressBlock article span {
+  color: #e50045;
+  font-weight: bold;
+  position: absolute;
+  right: 7%;
+  top: 81px;
+}
