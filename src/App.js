@@ -20,6 +20,7 @@ import AdminDashboard from "./Components/AdminArea/AdminDashboard";
 import UploadProfilePhoto from "./Components/Auth/uploadProfilePhoto";
 import PasswordUpdate from "./Components/AdminArea/PasswordUpdate";
 import AddMovies from "./Components/MoviesComponent/AddMovies";
+import ListMovie from "./Components/MoviesComponent/ListMovie";
 
 class App extends Component {
   state = {
@@ -55,6 +56,9 @@ class App extends Component {
           <Switch>
             <Route path="/" exact>
               <Home />
+            </Route>
+            <Route path="/zee5originals/details/:movie_name/:id" exact>
+              <ListMovie />
             </Route>
 
             <Route path="/login" exact>

@@ -1,4 +1,5 @@
 import React from "react";
+import ListOfMovies from "../Components/MoviesComponent/ListOfMovies";
 import SliderComponent from "../Components/SliderComponent/SliderComponent";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <section id="sliderWrapper">
         <SliderComponent />
+        <ListOfMovies />
       </section>
     </div>
   );

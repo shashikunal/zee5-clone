@@ -103,3 +103,34 @@ p > button {
 .play_icon {
   margin: 4px 9px 4px 0;
 }
+
+#movies_Block article {
+  width: 95%;
+  margin: 20px auto;
+}
+#movies_Block h2 {
+  padding: 20px 0;
+  text-transform: capitalize;
+  font-size: 19px;
+}
+
+.thumbnail_home_block {
+  display: flex;
+}
+
+.thumbnail_home_block div {
+  background-color: #0f0617;
+  flex-basis: 15%;
+  height: 320px;
+  border-radius: 4px;
+  filter: drop-shadow();
+  margin: 10px;
+}
+
+.thumbnail_home_block div img {
+  width: 230px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  filter: drop-shadow();
+}
