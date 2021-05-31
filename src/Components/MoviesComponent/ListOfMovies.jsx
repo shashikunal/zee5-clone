@@ -46,14 +46,24 @@ class ListOfMovies extends Component {
                 0,
                 10
               )}/${movie.id}`,
-              id: movie.id,
-              movie_name: movie.movie_name,
-              videoUrl: movie.videoUrl,
+              state: {
+                id: movie.id,
+                movie_name: movie.movie_name,
+                videoUrl: movie.videoUrl,
+              },
             }}
           >
             <div className="thumbnail_block">
               <img src={movie.imageUrl} alt={movie.movie_name} />
             </div>
+            <main className="movie_content_block">
+              <span>
+                <i class="fas fa-play"></i>
+
+                <i class="fas fa-share-alt"></i>
+              </span>
+              <p>{movie.movie_name.slice(0, 30)}</p>
+            </main>
           </Link>
         </Fragment>
       );

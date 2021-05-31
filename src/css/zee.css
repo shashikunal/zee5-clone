@@ -116,6 +116,9 @@ p > button {
 
 .thumbnail_home_block {
   display: flex;
+  position: relative;
+  transition: ease all 0.7s;
+  transform: scale(1);
 }
 
 .thumbnail_home_block div {
@@ -133,4 +136,128 @@ p > button {
   object-fit: cover;
   border-radius: 4px;
   filter: drop-shadow();
+}
+
+.movie_content_block {
+  position: absolute;
+  bottom: 10px;
+  z-index: 9999;
+  color: #fff;
+  border: red;
+  width: 250px;
+  flex-direction: column;
+  padding: 24px;
+  display: none;
+}
+
+.movie_content_block span {
+  display: flex;
+}
+.movie_content_block span i {
+  width: 50%;
+  padding-bottom: 10px;
+}
+
+.thumbnail_block:hover {
+  transform: scale(1.03);
+  position: relative;
+  z-index: 10;
+  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 1px 1px 1px 1px inset #111;
+  background-color: #0f0617;
+}
+
+.thumbnail_block:hover + .movie_content_block {
+  display: flex !important;
+}
+
+.single_movie img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
+
+.single_movie {
+  position: relative;
+}
+.single_movie_content_block {
+  position: absolute;
+  top: 8%;
+  left: 7%;
+  width: 50%;
+}
+
+.single_movie_content_block h2 {
+  width: 58%;
+  padding: 20px 0;
+  text-shadow: 1px 1px 1px #111;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 30px;
+}
+
+.single_movie_content_block ul {
+  display: flex;
+}
+.single_movie_content_block ul li {
+  margin: 0 11px 10px;
+  text-shadow: 1px 1px 1px #111;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.single_movie_content_block div {
+  padding: 10px 0;
+}
+
+.watch_button {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin: -124px -82px 0;
+  align-items: flex-start;
+  height: 200px;
+}
+
+.watch_button a {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(red),
+    to(#a100ff)
+  );
+  background: -webkit-linear-gradient(left, red, #a100ff);
+  background: linear-gradient(90deg, red 0, #a100ff);
+  border-radius: 50px;
+  padding: 18px 47px 18px 55px;
+  text-align: left;
+  width: auto;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.watch_button span {
+  position: relative;
+}
+
+.watch_button span i {
+  position: absolute;
+  left: -44px;
+  top: -4px;
+  border: 1px solid #fff;
+  padding: 6px;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  background-color: #fff;
+  color: deeppink;
+}
+video {
+  width: 100%;
+  height: 600px;
 }
